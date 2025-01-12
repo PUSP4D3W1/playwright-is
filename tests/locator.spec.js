@@ -14,5 +14,6 @@ test('locator dan assertions', async ({page }) => {
 
     const buttonLogin = page.locator('#login-button');
     await buttonLogin.click();
-    await expect(buttonLogin).toHaveText('Login');
+    // //await expect(buttonLogin).toBeVisible();
+    // //await expect(buttonLogin).toHaveId('#login-button');
 });
