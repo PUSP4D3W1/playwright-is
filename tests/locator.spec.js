@@ -14,6 +14,7 @@ test('locator dan assertions', async ({page }) => {
 
     const buttonLogin = page.locator('#login-button');
     await buttonLogin.click();
+
     const addtocartback = page.locator('#add-to-cart-sauce-labs-backpack');
     await addtocartback.click();
 
