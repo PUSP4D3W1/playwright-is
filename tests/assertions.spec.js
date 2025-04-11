@@ -81,12 +81,12 @@ test('Fill checklist date in Google Form', async ({ page }) => {
     await dateInput.fill('2025-11-04');
 
     // Optional wait to simulate user pause
-    await page.waitForTimeout(6000);
+    await page.waitForTimeout(3000);
 
     // Assert the value was filled correctly
     await expect(dateInput).toHaveValue('2025-11-04');
 
-    // Optionally click the Submit button
-    // await page.getByRole('button', { name: 'Submit' }).click(); // or use locator if 'Submit' text is localized
+    //Optionally click the Submit button
+    await page.getByRole('button', { name: 'Submit' }).click(); // or use locator if 'Submit' text is localized
 });
 
