@@ -17,13 +17,13 @@ export default class newActions {
     }
 
     async goto() {
-        await this.page.goto('https://docs.google.com/forms/d/e/1FAIpQLSdUoJuxG1BTH3n3RGeewi97fOlVtPWrYZ4IlAr-lcGPL45vZg/viewform');
+        await page.goto('https://docs.google.com/forms/d/e/1FAIpQLSdUoJuxG1BTH3n3RGeewi97fOlVtPWrYZ4IlAr-lcGPL45vZg/viewform');
     }
 
-    async async () {
+    async fillChecklistDate () {
 
         // Click the outer wrapper to focus the input (if needed)
-        await this.page.click('.rFrNMe.yqQS1.hatWr.zKHdkd .aCsJod.oJeWuf');
+        await page.click('.rFrNMe.yqQS1.hatWr.zKHdkd .aCsJod.oJeWuf');
     
         // Wait for the input to be visible
         const dateInput = page.locator('#mG61Hd .whsOnd.zHQkBf');
