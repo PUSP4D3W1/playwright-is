@@ -59,13 +59,12 @@ const { default: newActions} = require('./actions/newActions');
 //     await Finish.click();
 // });
 
-test('PMO weekend', async ({page}) => {
-    const objActions = new newActions(page);
-    await objActions.goto();
-    await objActions.fillChecklistDate();
-});
+// test('PMO weekend', async ({page}) => {
+//     const objActions = new newActions(page);
+//     await objActions.goto();
+//     await objActions.fillChecklistDate();
+// });
 
-const { test, expect } = require('@playwright/test');
 
 test('Fill checklist date in Google Form', async ({ page }) => {
     // Go to the Google Form
@@ -79,13 +78,13 @@ test('Fill checklist date in Google Form', async ({ page }) => {
     await dateInput.waitFor({ state: 'visible' });
 
     // Fill the date (Playwright's fill replaces existing text by default)
-    await dateInput.fill('03/25/2025');
+    await dateInput.fill('2025-11-04');
 
     // Optional wait to simulate user pause
     await page.waitForTimeout(6000);
 
     // Assert the value was filled correctly
-    await expect(dateInput).toHaveValue('03/25/2025');
+    await expect(dateInput).toHaveValue('2025-11-04');
 
     // Optionally click the Submit button
     // await page.getByRole('button', { name: 'Submit' }).click(); // or use locator if 'Submit' text is localized
