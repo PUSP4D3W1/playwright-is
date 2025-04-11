@@ -3,15 +3,27 @@ const { test, expect } = require('@playwright/test');
 const { default: newActions} = require('./actions/newActions');
 
 test('locator dan assertions', async ({page}) => {
-    await page.goto('https://www.saucedemo.com/');
+    await page.goto('https://forms.gle/koWmKJjpzKfPHuWF7');
 
-    const inputUsername = page.locator('#user-name');
-    await inputUsername.fill('standard_user');
-    await expect (inputUsername).toHaveValue('standard_user');
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-GB'); // Formats as DD/MM/YYYY
+    await page.fill('input[name="your-input-name"]', formattedDate);
+    
+    const selectWeek = page.locator('#i12 > div.vd3tt > div');
+    await selectWeek.click();
 
-    const inputPassword = page.locator('#password');
-    await inputPassword.fill('secret_sauce');
-    await expect (inputPassword).toHaveValue('secret_sauce');
+    const selectProject = page.locator('#i32 > div.vd3tt > div > div');
+    await selectProject.click();
+
+    const inputSampledata = page.locator('div.o3Dpx > div:nth-of-type(4) input');
+    await inputSampledata.fill('6281000000001');
+    await expect (inputSampledata).toHaveValue('6281000000001');
+
+    const selectRecLocFe = page.locator('.AB7Lab.Id5V1').filter({ hasText: 'OK / Ada' });
+    await selectRecLocFe.click();
+
+    const selectRecLocRes = page.locator('.AB7Lab.Id5V1').filter({ hasText: 'OK / Ada' });
+    await selectRecLocRes.click();
 
     const buttonLogin = page.locator('#login-button');
     await buttonLogin.click();
@@ -50,9 +62,8 @@ test('locator dan assertions', async ({page}) => {
 test('PMO weekend', async ({page}) => {
     const objActions = new newActions(page);
     await objActions.goto();
-    await objActions.login();
-    await objActions.addToCart();
-    await objActions.checkoutConfirm();
+    await objActions.fillChecklistDate();
+    await objActions.submit();
 });
 
 
