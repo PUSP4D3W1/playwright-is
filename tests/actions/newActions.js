@@ -1,5 +1,5 @@
 import exp from "constants";
-import locatorDua from "/locator/locatorDua";
+import locatorDua from "../locator/locatorDua";
 import { expect, selectors } from "@playwright/test";
 
 export default class newActions {
@@ -34,8 +34,8 @@ export default class newActions {
     //     .click(Selector('#mG61Hd span').withText('Kirim').nth(1));
     }
 
-    async submit () {
-        await this.clickSubmit.click();
-    }
+    // async submit () {
+    //     await this.clickSubmit.click();
+    // }
 
 }
