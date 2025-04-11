@@ -63,7 +63,31 @@ test('PMO weekend', async ({page}) => {
     const objActions = new newActions(page);
     await objActions.goto();
     await objActions.fillChecklistDate();
-
 });
 
+const { test, expect } = require('@playwright/test');
+
+test('Fill checklist date in Google Form', async ({ page }) => {
+    // Go to the Google Form
+    await page.goto('https://docs.google.com/forms/d/e/1FAIpQLSdUoJuxG1BTH3n3RGeewi97fOlVtPWrYZ4IlAr-lcGPL45vZg/viewform');
+
+    // Click the outer wrapper to focus the input (if needed)
+    await page.click('.rFrNMe.yqQS1.hatWr.zKHdkd .aCsJod.oJeWuf');
+
+    // Wait for the input to be visible
+    const dateInput = page.locator('#mG61Hd .whsOnd.zHQkBf');
+    await dateInput.waitFor({ state: 'visible' });
+
+    // Fill the date (Playwright's fill replaces existing text by default)
+    await dateInput.fill('03/25/2025');
+
+    // Optional wait to simulate user pause
+    await page.waitForTimeout(6000);
+
+    // Assert the value was filled correctly
+    await expect(dateInput).toHaveValue('03/25/2025');
+
+    // Optionally click the Submit button
+    // await page.getByRole('button', { name: 'Submit' }).click(); // or use locator if 'Submit' text is localized
+});
 
