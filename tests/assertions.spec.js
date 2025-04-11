@@ -62,7 +62,8 @@ const { default: newActions} = require('./actions/newActions');
 test('PMO weekend', async ({page}) => {
     const objActions = new newActions(page);
     await objActions.goto();
-    
+    await objActions.fillChecklistDate();
+
 });
 
 
